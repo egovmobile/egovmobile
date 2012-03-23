@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html LANG="ko"> 
+<!-- 
+/* ----------------------------------------------------------------------------
+   Network API 가이드 프로그램
+   Description :  Network API 가이드 프로그램
+   Modification Information
+   수정일           수정자      수정내용
+   -------------    --------    ---------------------
+   2012.02.14       서형주      최초 생성
+ 
+---------------------------------------------------------------------------- */
+
+ -->
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Network API Guide</title>
+      
+    <!-- eGovFrame Common import -->
+    <!-- <link rel="stylesheet" href="jquery.mobile-1.0.1/jquery.mobile.structure-1.0.1.min.css" /> -->
+    <link rel="stylesheet" href="css/egovframework/mbl/cmm/jquery.mobile-1.0rc3.min.css" />
+    <link rel="stylesheet" href="css/egovframework/mbl/cmm/EgovMobile.css" />
+    <script type="text/javascript" src="js/egovframework/mbl/cmm/jquery-1.6.4.min.js"></script>
+
+
+    <!-- History.js -->
+    <script type="text/javascript" src="js/egovframework/mbl/cmm/jquery.history.js"></script>
+
+    <script type="text/javascript" src="js/egovframework/mbl/cmm/jquery.mobile-1.0rc3.min.js"></script>
+    <script type="text/javascript" src="js/egovframework/mbl/cmm/EgovMobile.js"></script>
+    <script type="text/javascript" src="js/egovframework/mbl/cmm/EgovHybrid.js"></script>
+
+    <!-- iScroll.js import -->
+    <script type="text/javascript" src="js/iscroll/iscroll.js"></script>
+
+
+    <!-- Phonegap.js import -->
+    <script type="text/javascript" charset="utf-8" src="js/egovframework/mbl/cmm/phonegap-1.4.0.js"></script>
+        
+        
+    <!-- Customm CSS import --> 
+    <link rel="stylesheet" href="css/egovframework/mbl/hyb/NetworkAPI.css" />
+
+    
+    <!-- Customm js import -->     
+    <script type="text/javascript" charset="utf-8" src="js/egovframework/mbl/hyb/NetworkAPI.js"></script>   
+        
+    <script type="text/javascript" charset="utf-8">
+    
+    	var egovHyb = new EgovHybrid("http://192.168.100.62:8080/DeviceAPIGuide_Web/");
+    	
+        
+        // Wait for PhoneGap to load
+        // 
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+        //
+        function onDeviceReady() {  
+            loadNetworkInfo();
+            
+        }
+        
+        
+       
+        
+        //  iscroll setting
+        var myScroll;
+        function loadiScroll() {
+        	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            myScroll = new iScroll('wrapper');
+        }
+        
+        
+
+        
+    </script>    
+   
+</head>
+	
+<body>
+
+     
+   
+
+	<!-- Network Info Page -->
+	<div id="networkInfo" data-role="page" data-theme="d">
+
+
+		<div data-role="header" data-theme="d" data-position="fixed">
+            <h1>네트워크 정보</h1>
+            <a href="javascript:fn_goNetworkInfoList()" data-icon="arrow-r" data-theme="d" class="ui-btn-right">리스트</a>
+		</div>
+
+
+
+        <div data-role="content" >
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><div class="ui-body-b" align="center">Platform</div></div>
+                <div class="ui-block-b"><div class="ui-body-b" align="center">&nbsp;</div></div>
+                <div class="ui-block-a"><div class="ui-body-b" align="center">Connection Type</div></div>
+                <div class="ui-block-b"><div class="ui-body-b" align="center">&nbsp;</div></div>
+                <div class="ui-block-a"><div class="ui-body-b" align="center">OS Version</div></div>
+                <div class="ui-block-b"><div class="ui-body-b" align="center">&nbsp;</div></div>
+            </div>
+        </div>
+        
+		<div id="footer" data-role="footer" data-theme="a" data-position="fixed">
+            <a href="javascript:confirm_registNetworkInfo()" data-icon="gear" data-theme="a" style="float: right; margin-right:10px;margin-top:8px;">정보 전송</a>
+		</div>
+	
+	</div>
+
+	<!-- Network Info List Saved In Server -->
+    <div id="networkInfoList" data-role="page" data-theme="d">
+        <div id="header" data-role="header" data-theme="d">
+            <a href="javascript:$.mobile.changePage('#networkInfo', 'slide', false, false);" data-rel="back" data-role="button" data-icon="arrow-l" data-theme="d">뒤로</a>
+            <h1>Network Info List</h1>
+        </div>
+        <div id="wrapper">
+            <div id="scroller">
+                <ul id="theList" data-role="listview" data-inset="true">
+                    
+                </ul>
+            </div>
+        </div>
+        <div id="footer" data-role="footer" data-theme="a" data-position="fixed">
+            <a href="javascript:confirm_deleteNetworkInfoList()" data-icon="gear" data-theme="a" style="float: right; margin-right:10px;margin-top:8px;">리스트 삭제</a>
+        </div>
+    </div>   
+	
+
+</body>
+</html>
